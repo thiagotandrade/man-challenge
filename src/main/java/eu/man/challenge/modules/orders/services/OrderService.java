@@ -1,10 +1,14 @@
-package eu.man.challenge;
+package eu.man.challenge.modules.orders.services;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+import eu.man.challenge.modules.orders.infra.entities.OrderEntity;
+import eu.man.challenge.modules.orders.dtos.OrderResponse;
+import eu.man.challenge.modules.orders.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -29,14 +33,13 @@ public class OrderService {
 				return new OrderResponse(null, HttpStatus.PRECONDITION_FAILED);
 			}
 		}
-		
-		order.setId(UUID.randomUUID().toString());
-		
-		if(orderRepository.saveOrder(order).booleanValue()) {
-			return new OrderResponse(order, HttpStatus.OK);
+
+		OrderEntity returnedOrder = orderRepository.saveOrder(order);
+		if(Objects.isNull(returnedOrder)) {
+			return new OrderResponse(null, HttpStatus.CONFLICT);
 		}
-		
-		return new OrderResponse(null, HttpStatus.CONFLICT);
+
+		return new OrderResponse(returnedOrder, HttpStatus.OK);
 	}
 	
 	public List<OrderEntity> getAllOrders() {

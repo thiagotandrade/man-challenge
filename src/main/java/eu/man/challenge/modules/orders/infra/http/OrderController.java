@@ -1,7 +1,10 @@
-package eu.man.challenge;
+package eu.man.challenge.modules.orders.infra.http;
 
 import java.util.List;
 
+import eu.man.challenge.modules.orders.infra.entities.OrderEntity;
+import eu.man.challenge.modules.orders.dtos.OrderResponse;
+import eu.man.challenge.modules.orders.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

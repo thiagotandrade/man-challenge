@@ -1,7 +1,9 @@
-package eu.man.challenge;
+package eu.man.challenge.modules.orders.repositories;
 
 import java.util.List;
 
+import eu.man.challenge.modules.kitchen.KitchenService;
+import eu.man.challenge.modules.orders.infra.entities.OrderEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +16,7 @@ public class OrderRepository {
 		return kitchenService.getOrderById(id);
 	}
 	
-	public Boolean saveOrder(OrderEntity order) {
+	public OrderEntity saveOrder(OrderEntity order) {
 		return kitchenService.saveOrder(order);
 	}
 
