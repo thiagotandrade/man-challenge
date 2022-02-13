@@ -3,6 +3,7 @@ package eu.man.challenge.modules.kitchen.services;
 import eu.man.challenge.modules.orders.infra.entities.NullOrder;
 import eu.man.challenge.modules.orders.infra.entities.OrderEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,6 +20,7 @@ public class KitchenServiceAdapter implements KitchenService {
 
     @Autowired
     public KitchenServiceAdapter(KitchenServiceAPI kitchenService) {
+        Assert.notNull(kitchenService, "OrderService must not be null!");
         this.kitchenService = kitchenService;
     }
 

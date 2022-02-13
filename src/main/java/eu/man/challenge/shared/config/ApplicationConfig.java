@@ -20,6 +20,6 @@ public class ApplicationConfig  {
 
     @Bean
     public OrderRepository orderRepository() {
-        return new OrderRepositoryImpl();
+        return new OrderRepositoryImpl(kitchenService());
     }
 }

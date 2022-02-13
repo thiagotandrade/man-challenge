@@ -8,14 +8,18 @@ import eu.man.challenge.modules.orders.repositories.OrderRepositoryImpl;
 import eu.man.challenge.shared.exceptions.InvalidOrderException;
 import eu.man.challenge.shared.exceptions.OrderAlreadyExistsException;
 import eu.man.challenge.shared.exceptions.OrderNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 @Service
 public class OrderService {
 	private final OrderRepositoryImpl orderRepository;
 
+	@Autowired
 	public OrderService(OrderRepositoryImpl orderRepository) {
+		Assert.notNull(orderRepository, "orderRepository must not be null!");
 		this.orderRepository = orderRepository;
 	}
 
@@ -32,7 +36,7 @@ public class OrderService {
 	public OrderResponse createOrder(OrderEntity order) {
 		for(String ingredient : order.getIngredients()) {
 			if(ingredient.toLowerCase().contains("p")) {
-				throw new InvalidOrderException("The given order contains invalid ingredients");
+				throw new InvalidOrderException("The given order contains invalid ingredient(s)");
 			}
 		}
 
