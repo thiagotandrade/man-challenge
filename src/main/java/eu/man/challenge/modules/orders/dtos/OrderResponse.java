@@ -4,8 +4,8 @@ import eu.man.challenge.modules.orders.infra.entities.OrderEntity;
 import org.springframework.http.HttpStatus;
 
 public class OrderResponse {
-	private OrderEntity order;
-	private HttpStatus status;
+	private final OrderEntity order;
+	private final HttpStatus status;
 
 	public OrderResponse(OrderEntity order, HttpStatus status) {
 		super();
@@ -16,15 +16,7 @@ public class OrderResponse {
 	public OrderEntity getOrder() {
 		return order;
 	}
-	public void setOrder(OrderEntity order) {
-		this.order = order;
-	}
 	public HttpStatus getStatus() {
 		return status;
 	}
-	public void setStatus(HttpStatus status) {
-		this.status = status;
-	}
-	
-	
 }

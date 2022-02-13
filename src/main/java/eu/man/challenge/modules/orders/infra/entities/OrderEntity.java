@@ -2,6 +2,7 @@ package eu.man.challenge.modules.orders.infra.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(value = { "id" }, allowGetters = true, allowSetters = true)
@@ -29,6 +30,10 @@ public class OrderEntity {
 	public void setIngredients(List<String> ingredients) {
 		this.ingredients = ingredients;
 	}
-	
+
+	@JsonIgnore
+	public boolean isNull() {
+		return false;
+	}
 	
 }
