@@ -8,7 +8,6 @@ public class OrderResponse {
 	private final HttpStatus status;
 
 	public OrderResponse(OrderEntity order, HttpStatus status) {
-		super();
 		this.order = order;
 		this.status = status;
 	}

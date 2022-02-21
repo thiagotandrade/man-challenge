@@ -20,7 +20,7 @@ public class KitchenServiceAdapter implements KitchenService {
 
     @Autowired
     public KitchenServiceAdapter(KitchenServiceAPI kitchenService) {
-        Assert.notNull(kitchenService, "OrderService must not be null!");
+        Assert.notNull(kitchenService, "kitchenService must not be null!");
         this.kitchenService = kitchenService;
     }
 

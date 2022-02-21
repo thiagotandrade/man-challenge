@@ -2,9 +2,9 @@ package eu.man.challenge.modules.orders.services;
 
 import java.util.List;
 
+import eu.man.challenge.modules.kitchen.services.KitchenService;
 import eu.man.challenge.modules.orders.infra.entities.OrderEntity;
 import eu.man.challenge.modules.orders.dtos.OrderResponse;
-import eu.man.challenge.modules.orders.repositories.OrderRepositoryImpl;
 import eu.man.challenge.shared.exceptions.InvalidOrderException;
 import eu.man.challenge.shared.exceptions.OrderAlreadyExistsException;
 import eu.man.challenge.shared.exceptions.OrderNotFoundException;
@@ -15,16 +15,16 @@ import org.springframework.util.Assert;
 
 @Service
 public class OrderService {
-	private final OrderRepositoryImpl orderRepository;
+	private final KitchenService kitchenService;
 
 	@Autowired
-	public OrderService(OrderRepositoryImpl orderRepository) {
-		Assert.notNull(orderRepository, "orderRepository must not be null!");
-		this.orderRepository = orderRepository;
+	public OrderService(KitchenService kitchenService) {
+		Assert.notNull(kitchenService, "kitchenService must not be null!");
+		this.kitchenService = kitchenService;
 	}
 
 	public OrderResponse getOrderById(String id) {
-		OrderEntity order = orderRepository.getOrderById(id);
+		OrderEntity order = kitchenService.getOrderById(id);
 
 		if(order.isNull()) {
 			throw new OrderNotFoundException("Order not found with id " + id);
@@ -40,7 +40,7 @@ public class OrderService {
 			}
 		}
 
-		OrderEntity returnedOrder = orderRepository.saveOrder(order);
+		OrderEntity returnedOrder = kitchenService.saveOrder(order);
 		if(returnedOrder.isNull()) {
 			throw new OrderAlreadyExistsException("An order with id " + order.getId() + "already exists");
 		}
@@ -49,6 +49,6 @@ public class OrderService {
 	}
 	
 	public List<OrderEntity> getAllOrders() {
-		return orderRepository.getAll();
+		return kitchenService.getAll();
 	}
 }
