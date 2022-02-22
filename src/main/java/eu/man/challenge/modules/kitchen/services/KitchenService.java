@@ -1,11 +1,11 @@
 package eu.man.challenge.modules.kitchen.services;
 
-import eu.man.challenge.shared.entities.OrderEntity;
+import eu.man.challenge.shared.entities.Order;
 
 import java.util.List;
 
 public interface KitchenService {
-    OrderEntity getOrderById(String id);
-    OrderEntity saveOrder(OrderEntity newOrder);
-    List<OrderEntity> getAll();
+    Order getOrderById(String id);
+    Order saveOrder(Order newOrder);
+    List<Order> getAll();
 }

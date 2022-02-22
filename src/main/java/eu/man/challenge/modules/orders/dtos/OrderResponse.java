@@ -1,18 +1,18 @@
 package eu.man.challenge.modules.orders.dtos;
 
-import eu.man.challenge.shared.entities.OrderEntity;
+import eu.man.challenge.shared.entities.Order;
 import org.springframework.http.HttpStatus;
 
 public class OrderResponse {
-	private final OrderEntity order;
+	private final Order order;
 	private final HttpStatus status;
 
-	public OrderResponse(OrderEntity order, HttpStatus status) {
+	public OrderResponse(Order order, HttpStatus status) {
 		this.order = order;
 		this.status = status;
 	}
 	
-	public OrderEntity getOrder() {
+	public Order getOrder() {
 		return order;
 	}
 	public HttpStatus getStatus() {

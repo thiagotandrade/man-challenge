@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import eu.man.challenge.shared.entities.OrderEntity;
+import eu.man.challenge.shared.entities.Order;
 
 /*
 	We assume that the KitchenServiceAPI is an external API, so we don't have any control over it.
@@ -13,14 +13,14 @@ import eu.man.challenge.shared.entities.OrderEntity;
  */
 
 public class KitchenServiceAPI {
-	private final List<OrderEntity> orders;
+	private final List<Order> orders;
 
 	public KitchenServiceAPI() {
 		this.orders = new ArrayList<>();
 	}
 
-	public OrderEntity getOrderById(String id) {
-		for(OrderEntity order : this.orders) {
+	public Order getOrderById(String id) {
+		for(Order order : this.orders) {
 			if (order.getId().equals(id)) {
 				return order;
 			}
@@ -29,10 +29,10 @@ public class KitchenServiceAPI {
 		return null;
 	}
 
-	public OrderEntity saveOrder(OrderEntity newOrder) {
+	public Order saveOrder(Order newOrder) {
 		newOrder.setId(UUID.randomUUID().toString());
 
-		Optional<OrderEntity> existingOrder = this.orders.stream()
+		Optional<Order> existingOrder = this.orders.stream()
 				.filter(o -> newOrder.getId().equals(o.getId()))
 				.findFirst();
 
@@ -44,7 +44,7 @@ public class KitchenServiceAPI {
 		return newOrder;
 	}
 
-	public List<OrderEntity> getAll() {
+	public List<Order> getAll() {
 		return this.orders;
 	}
 }

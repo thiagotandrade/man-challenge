@@ -1,8 +1,6 @@
 package eu.man.challenge.shared.entities;
 
-import eu.man.challenge.shared.entities.OrderEntity;
-
-public class NullOrder extends OrderEntity {
+public class NullOrder extends Order {
     @Override
     public boolean isNull() {
         return true;

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(value = { "id" }, allowGetters = true, allowSetters = true)
-public class OrderEntity {
+public class Order {
 	private String id;
 	private String customer;
 	private List<String> ingredients;

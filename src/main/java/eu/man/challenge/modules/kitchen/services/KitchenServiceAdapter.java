@@ -1,7 +1,7 @@
 package eu.man.challenge.modules.kitchen.services;
 
 import eu.man.challenge.shared.entities.NullOrder;
-import eu.man.challenge.shared.entities.OrderEntity;
+import eu.man.challenge.shared.entities.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
@@ -26,8 +26,8 @@ public class KitchenServiceAdapter implements KitchenService {
     }
 
     @Override
-    public OrderEntity getOrderById(String id) {
-        OrderEntity order = this.kitchenService.getOrderById(id);
+    public Order getOrderById(String id) {
+        Order order = this.kitchenService.getOrderById(id);
 
         if(Objects.isNull(order)) {
             return new NullOrder();
@@ -37,8 +37,8 @@ public class KitchenServiceAdapter implements KitchenService {
     }
 
     @Override
-    public OrderEntity saveOrder(OrderEntity order) {
-        OrderEntity savedOrder = this.kitchenService.saveOrder(order);
+    public Order saveOrder(Order order) {
+        Order savedOrder = this.kitchenService.saveOrder(order);
 
         if(Objects.isNull(savedOrder)) {
             return new NullOrder();
@@ -48,8 +48,8 @@ public class KitchenServiceAdapter implements KitchenService {
     }
 
     @Override
-    public List<OrderEntity> getAll() {
-        List<OrderEntity> orders = this.kitchenService.getAll();
+    public List<Order> getAll() {
+        List<Order> orders = this.kitchenService.getAll();
 
         if(ObjectUtils.isEmpty(orders)) {
             return Collections.emptyList();

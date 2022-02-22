@@ -2,7 +2,7 @@ package eu.man.challenge.modules.orders.infra.http;
 
 import java.util.List;
 
-import eu.man.challenge.shared.entities.OrderEntity;
+import eu.man.challenge.shared.entities.Order;
 import eu.man.challenge.modules.orders.dtos.OrderResponse;
 import eu.man.challenge.modules.orders.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,18 +28,18 @@ public class OrderController {
 
 
     @GetMapping("/order/all")
-    private ResponseEntity<List<OrderEntity>> getAllOrders(){
+    private ResponseEntity<List<Order>> getAllOrders(){
         return new ResponseEntity<>(orderService.getAllOrders(), HttpStatus.OK);
     }
 
     @GetMapping("/order/{id}")
-    private ResponseEntity<OrderEntity> getOrderById(@PathVariable String id) {
+    private ResponseEntity<Order> getOrderById(@PathVariable String id) {
     	OrderResponse response = orderService.getOrderById(id);
 		return new ResponseEntity<>(response.getOrder(), response.getStatus());
     }
 
     @PostMapping("/order")
-    private ResponseEntity<OrderEntity> createOrder(@RequestBody OrderEntity order) {
+    private ResponseEntity<Order> createOrder(@RequestBody Order order) {
        	OrderResponse response = orderService.createOrder(order);
 		return new ResponseEntity<>(response.getOrder(), response.getStatus());
     }
