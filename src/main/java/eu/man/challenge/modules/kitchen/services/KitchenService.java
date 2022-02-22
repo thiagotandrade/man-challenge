@@ -1,6 +1,6 @@
 package eu.man.challenge.modules.kitchen.services;
 
-import eu.man.challenge.modules.orders.infra.entities.OrderEntity;
+import eu.man.challenge.shared.entities.OrderEntity;
 
 import java.util.List;
 

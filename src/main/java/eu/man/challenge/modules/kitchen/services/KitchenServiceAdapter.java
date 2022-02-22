@@ -1,9 +1,10 @@
 package eu.man.challenge.modules.kitchen.services;
 
-import eu.man.challenge.modules.orders.infra.entities.NullOrder;
-import eu.man.challenge.modules.orders.infra.entities.OrderEntity;
+import eu.man.challenge.shared.entities.NullOrder;
+import eu.man.challenge.shared.entities.OrderEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+import org.springframework.util.ObjectUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -50,7 +51,7 @@ public class KitchenServiceAdapter implements KitchenService {
     public List<OrderEntity> getAll() {
         List<OrderEntity> orders = this.kitchenService.getAll();
 
-        if(orders == null || orders.isEmpty()) {
+        if(ObjectUtils.isEmpty(orders)) {
             return Collections.emptyList();
         }
 

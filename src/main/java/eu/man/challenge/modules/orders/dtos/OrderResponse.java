@@ -1,6 +1,6 @@
 package eu.man.challenge.modules.orders.dtos;
 
-import eu.man.challenge.modules.orders.infra.entities.OrderEntity;
+import eu.man.challenge.shared.entities.OrderEntity;
 import org.springframework.http.HttpStatus;
 
 public class OrderResponse {

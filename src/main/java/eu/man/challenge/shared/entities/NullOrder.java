@@ -1,4 +1,6 @@
-package eu.man.challenge.modules.orders.infra.entities;
+package eu.man.challenge.shared.entities;
+
+import eu.man.challenge.shared.entities.OrderEntity;
 
 public class NullOrder extends OrderEntity {
     @Override

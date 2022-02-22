@@ -1,4 +1,4 @@
-package eu.man.challenge.modules.orders.infra.entities;
+package eu.man.challenge.shared.entities;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import eu.man.challenge.modules.orders.infra.entities.OrderEntity;
+import eu.man.challenge.shared.entities.OrderEntity;
 
 /*
 	We assume that the KitchenServiceAPI is an external API, so we don't have any control over it.

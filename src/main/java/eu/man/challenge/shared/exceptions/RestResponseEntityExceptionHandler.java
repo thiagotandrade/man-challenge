@@ -15,11 +15,21 @@ import java.util.Date;
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = { OrderNotFoundException.class })
-    protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
+    protected ResponseEntity<Object> handleOrderNotFoundException(RuntimeException ex, WebRequest request) {
         return handleExceptionInternal(ex, new ErrorDetails(new Date(), ex.getMessage()),
                 new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
-    // TODO: Create exception handler for OrderAlreadyExistsException
+    @ExceptionHandler(value = { InvalidOrderException.class })
+    protected ResponseEntity<Object> handleInvalidOrderException(RuntimeException ex, WebRequest request) {
+        return handleExceptionInternal(ex, new ErrorDetails(new Date(), ex.getMessage()),
+                new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler(value = { OrderAlreadyExistsException.class })
+    protected ResponseEntity<Object> handleOrderAlreadyExistsException(RuntimeException ex, WebRequest request) {
+        return handleExceptionInternal(ex, new ErrorDetails(new Date(), ex.getMessage()),
+                new HttpHeaders(), HttpStatus.CONFLICT, request);
+    }
 }
 
