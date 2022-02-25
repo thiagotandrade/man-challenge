@@ -1,15 +1,13 @@
 package eu.man.challenge.modules.orders.infra.http;
 
-import java.util.List;
-
-import eu.man.challenge.shared.entities.Order;
-import eu.man.challenge.modules.orders.dtos.OrderResponse;
 import eu.man.challenge.modules.orders.service.OrderService;
+import eu.man.challenge.shared.entities.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class OrderController {

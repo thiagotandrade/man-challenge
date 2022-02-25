@@ -1,16 +1,14 @@
 package eu.man.challenge.modules.orders.service;
 
-import java.util.List;
-
 import eu.man.challenge.modules.kitchen.service.KitchenService;
 import eu.man.challenge.shared.entities.Order;
-import eu.man.challenge.modules.orders.dtos.OrderResponse;
 import eu.man.challenge.shared.exceptions.OrderAlreadyExistsException;
 import eu.man.challenge.shared.exceptions.OrderNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+
+import java.util.List;
 
 @Service
 public class OrderService {
