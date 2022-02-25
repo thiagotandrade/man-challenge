@@ -18,6 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -81,7 +82,8 @@ public class OrderServiceTest {
                 Arrays.asList("ingredient-1", "", "ingredient-3"),
                 Arrays.asList("ingredient-1", null, "ingredient-3"),
                 Arrays.asList("ingredient-1", "pistachio", "ingredient-3"),
-                Arrays.asList("ingredient-1", "Parmesan cheese", "ingredient-3")
+                Arrays.asList("ingredient-1", "Parmesan cheese", "ingredient-3"),
+                Collections.emptyList()
         );
     }
 
