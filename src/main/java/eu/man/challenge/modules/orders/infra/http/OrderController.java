@@ -4,16 +4,12 @@ import java.util.List;
 
 import eu.man.challenge.shared.entities.Order;
 import eu.man.challenge.modules.orders.dtos.OrderResponse;
-import eu.man.challenge.modules.orders.services.OrderService;
+import eu.man.challenge.modules.orders.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class OrderController {
@@ -26,21 +22,19 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-
     @GetMapping("/order/all")
-    private ResponseEntity<List<Order>> getAllOrders(){
-        return new ResponseEntity<>(orderService.getAllOrders(), HttpStatus.OK);
+    List<Order> getAllOrders(){
+        return orderService.getAllOrders();
     }
 
     @GetMapping("/order/{id}")
-    private ResponseEntity<Order> getOrderById(@PathVariable String id) {
-    	OrderResponse response = orderService.getOrderById(id);
-		return new ResponseEntity<>(response.getOrder(), response.getStatus());
+    Order getOrderById(@PathVariable("id") String id) {
+    	return orderService.getOrderById(id);
     }
 
     @PostMapping("/order")
-    private ResponseEntity<Order> createOrder(@RequestBody Order order) {
-       	OrderResponse response = orderService.createOrder(order);
-		return new ResponseEntity<>(response.getOrder(), response.getStatus());
+    @ResponseStatus(code = HttpStatus.CREATED)
+    Order createOrder(@RequestBody Order order) {
+       	return orderService.createOrder(order);
     }
 }

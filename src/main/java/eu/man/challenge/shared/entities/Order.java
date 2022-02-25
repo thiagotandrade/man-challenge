@@ -10,8 +10,22 @@ public class Order {
 	private String id;
 	private String customer;
 	private List<String> ingredients;
-	
-	
+
+	public Order(String customer, List<String> ingredients) {
+		this.customer = customer;
+		this.ingredients = ingredients;
+	}
+
+	public Order(String id, String customer, List<String> ingredients) {
+		this.id = id;
+		this.customer = customer;
+		this.ingredients = ingredients;
+	}
+
+	public Order() {
+
+	}
+
 	public String getId() {
 		return id;
 	}

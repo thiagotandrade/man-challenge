@@ -1,4 +1,4 @@
-package eu.man.challenge.modules.kitchen.services;
+package eu.man.challenge.modules.kitchen.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class KitchenServiceAPI {
 		this.orders = new ArrayList<>();
 	}
 
-	public Order getOrderById(String id) {
+	protected Order getOrderById(String id) {
 		for(Order order : this.orders) {
 			if (order.getId().equals(id)) {
 				return order;
@@ -29,7 +29,7 @@ public class KitchenServiceAPI {
 		return null;
 	}
 
-	public Order saveOrder(Order newOrder) {
+	protected Order saveOrder(Order newOrder) {
 		newOrder.setId(UUID.randomUUID().toString());
 
 		Optional<Order> existingOrder = this.orders.stream()
@@ -44,7 +44,7 @@ public class KitchenServiceAPI {
 		return newOrder;
 	}
 
-	public List<Order> getAll() {
-		return this.orders;
+	protected List<Order> getAll() {
+		return List.copyOf(this.orders);
 	}
 }

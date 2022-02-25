@@ -1,4 +1,4 @@
-package eu.man.challenge.modules.kitchen.services;
+package eu.man.challenge.modules.kitchen.service;
 
 import eu.man.challenge.shared.entities.Order;
 

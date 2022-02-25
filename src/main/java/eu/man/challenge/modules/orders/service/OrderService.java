@@ -1,8 +1,8 @@
-package eu.man.challenge.modules.orders.services;
+package eu.man.challenge.modules.orders.service;
 
 import java.util.List;
 
-import eu.man.challenge.modules.kitchen.services.KitchenService;
+import eu.man.challenge.modules.kitchen.service.KitchenService;
 import eu.man.challenge.shared.entities.Order;
 import eu.man.challenge.modules.orders.dtos.OrderResponse;
 import eu.man.challenge.shared.exceptions.OrderAlreadyExistsException;
@@ -22,17 +22,17 @@ public class OrderService {
 		this.kitchenService = kitchenService;
 	}
 
-	public OrderResponse getOrderById(String id) {
+	public Order getOrderById(String id) {
 		Order order = kitchenService.getOrderById(id);
 
 		if(order.isNull()) {
 			throw new OrderNotFoundException("Order not found with id " + id);
 		}
 		
-		return new OrderResponse(order, HttpStatus.OK);
+		return order;
 	}
 	
-	public OrderResponse createOrder(Order order) {
+	public Order createOrder(Order order) {
 		OrderFieldsValidator.validate(order);
 
 		Order returnedOrder = kitchenService.saveOrder(order);
@@ -40,7 +40,7 @@ public class OrderService {
 			throw new OrderAlreadyExistsException("An order with id " + order.getId() + "already exists");
 		}
 
-		return new OrderResponse(returnedOrder, HttpStatus.OK);
+		return returnedOrder;
 	}
 	
 	public List<Order> getAllOrders() {

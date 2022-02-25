@@ -12,22 +12,22 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.Date;
 
 @ControllerAdvice
-public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = { OrderNotFoundException.class })
-    protected ResponseEntity<Object> handleOrderNotFoundException(RuntimeException ex, WebRequest request) {
+    private ResponseEntity<Object> handleOrderNotFoundException(RuntimeException ex, WebRequest request) {
         return handleExceptionInternal(ex, new ErrorDetails(new Date(), ex.getMessage()),
                 new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
     @ExceptionHandler(value = { InvalidOrderException.class })
-    protected ResponseEntity<Object> handleInvalidOrderException(RuntimeException ex, WebRequest request) {
+    private ResponseEntity<Object> handleInvalidOrderException(RuntimeException ex, WebRequest request) {
         return handleExceptionInternal(ex, new ErrorDetails(new Date(), ex.getMessage()),
                 new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
     @ExceptionHandler(value = { OrderAlreadyExistsException.class })
-    protected ResponseEntity<Object> handleOrderAlreadyExistsException(RuntimeException ex, WebRequest request) {
+    private ResponseEntity<Object> handleOrderAlreadyExistsException(RuntimeException ex, WebRequest request) {
         return handleExceptionInternal(ex, new ErrorDetails(new Date(), ex.getMessage()),
                 new HttpHeaders(), HttpStatus.CONFLICT, request);
     }
